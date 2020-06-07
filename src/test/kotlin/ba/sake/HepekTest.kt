@@ -1,12 +1,23 @@
 package ba.sake
 
-import org.junit.Assert.assertEquals
+import ba.sake.hepek.html.HtmlPage
+import kotlinx.html.BODY
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class MyLibraryTest {
+class HepekTest {
+
     @Test
-    fun testMyLanguage() {
-        assertEquals("Kotlin", Hepek().kotlinLanguage().name)
-        assertEquals(10, Hepek().kotlinLanguage().hotness)
+    fun testHepekContents() {
+        println(Index.contents())
+        assertTrue(1 == 1)
+    }
+}
+
+
+object Index : HtmlPage {
+
+    override fun BODY.pageContent() {
+        +"Selam merhaba!"
     }
 }

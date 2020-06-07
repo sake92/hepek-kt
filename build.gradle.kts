@@ -13,6 +13,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
+    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.1")
 
     testImplementation("junit:junit:4.12")
 }

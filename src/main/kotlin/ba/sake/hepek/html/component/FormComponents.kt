@@ -38,8 +38,8 @@ abstract class FormComponents {
     fun <T : FORM> inputText(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.text, name, id, label, state, block)
@@ -47,8 +47,8 @@ abstract class FormComponents {
     fun <T : FORM> inputPassword(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.password, name, id, label, state, block)
@@ -56,8 +56,8 @@ abstract class FormComponents {
     fun <T : FORM> inputEmail(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.email, name, id, label, state, block)
@@ -65,8 +65,8 @@ abstract class FormComponents {
     fun <T : FORM> inputUrl(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.url, name, id, label, state, block)
@@ -74,8 +74,8 @@ abstract class FormComponents {
     fun <T : FORM> inputTel(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.tel, name, id, label, state, block)
@@ -83,8 +83,8 @@ abstract class FormComponents {
     fun <T : FORM> inputFile(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.file, name, id, label, state, block)
@@ -92,8 +92,8 @@ abstract class FormComponents {
     fun <T : FORM> inputColor(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.color, name, id, label, state, block)
@@ -101,8 +101,8 @@ abstract class FormComponents {
     fun <T : FORM> inputNumber(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.number, name, id, label, state, block)
@@ -110,8 +110,8 @@ abstract class FormComponents {
     fun <T : FORM> inputRange(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.range, name, id, label, state, block)
@@ -119,8 +119,8 @@ abstract class FormComponents {
     fun <T : FORM> inputTime(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.time, name, id, label, state, block)
@@ -128,8 +128,8 @@ abstract class FormComponents {
     fun <T : FORM> inputWeek(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.week, name, id, label, state, block)
@@ -137,8 +137,8 @@ abstract class FormComponents {
     fun <T : FORM> inputMonth(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.month, name, id, label, state, block)
@@ -146,8 +146,8 @@ abstract class FormComponents {
     fun <T : FORM> inputDate(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.date, name, id, label, state, block)
@@ -155,8 +155,8 @@ abstract class FormComponents {
     fun <T : FORM> inputDateTimeLocal(
             form: T,
             name: String,
-            id: String?,
-            label: String,
+            id: String? = null,
+            label: String? = null,
             state: ValidationState? = null,
             block: INPUT.() -> Unit = {}
     ) = form.constructInputNormal(InputType.dateTimeLocal, name, id, label, state, block)
@@ -164,8 +164,8 @@ abstract class FormComponents {
     fun <T : FORM> inputSubmit(form: T, value: String, block: INPUT.() -> Unit = {}) =
             form.constructInputButton(InputType.submit, value, value, block)
 
-    fun <T : FORM> inputButton(form: T, value: String, label: String, block: INPUT.() -> Unit = {}) =
-            form.constructInputButton(InputType.button, value, label, block)
+    fun <T : FORM> inputButton(form: T, label: String? = null, block: INPUT.() -> Unit = {}) =
+            form.constructInputButton(InputType.button, label, label, block)
 
     fun <T : FORM> inputReset(form: T, value: String, block: INPUT.() -> Unit = {}) =
             form.constructInputButton(InputType.reset, value, value, block)

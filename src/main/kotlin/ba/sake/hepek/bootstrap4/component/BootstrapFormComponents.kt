@@ -140,10 +140,66 @@ data class BootstrapFormComponents(
                     }
                 }
             }
+            is Type.Companion.Inline -> {
+                labels.forEach { cbLabel ->
+                    label {
+                        div(classes = "form-check-inline") {
+                            input(type = InputType.checkBox, name = inputName) {
+                                if (!cbLabel.isBlank()) +" $cbLabel"
+                            }
+                        }
+
+                    }
+                }
+            }
             else -> {
                 labels.forEach { cbLabel ->
                     label {
                         input(type = InputType.checkBox, name = inputName) {
+                            if (!cbLabel.isBlank()) +" $cbLabel"
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    override fun <T : FORM> T.constructInputRadios(inputName: String, labels: List<String>, inputLabel: String?, inline: Boolean, block: INPUT.() -> Unit) {
+        val label = " $inputLabel"
+        when (formType) {
+            is Type.Companion.Horizontal -> {
+                val (colLabel, colInput) = horizontalRatioClasses(formType, true)
+                formGroup("row") {
+                    label(classes = "text-right $colLabel") { if (!inputLabel.isNullOrBlank()) +label }
+                    div(classes = colInput) {
+                        labels.forEach { cbLabel ->
+                            div(classes = "form-check") {
+                                label {
+                                    input(type = InputType.radio, name = inputName) {
+                                        if (!cbLabel.isBlank()) +" $cbLabel"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            is Type.Companion.Inline -> {
+                labels.forEach { cbLabel ->
+                    label {
+                        div(classes = "form-check-inline") {
+                            input(type = InputType.radio, name = inputName) {
+                                if (!cbLabel.isBlank()) +" $cbLabel"
+                            }
+                        }
+
+                    }
+                }
+            }
+            else -> {
+                labels.forEach { cbLabel ->
+                    label {
+                        input(type = InputType.radio, name = inputName) {
                             if (!cbLabel.isBlank()) +" $cbLabel"
                         }
                     }

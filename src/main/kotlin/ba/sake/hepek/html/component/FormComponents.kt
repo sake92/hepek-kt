@@ -176,6 +176,9 @@ abstract class FormComponents {
     fun <T : FORM> inputCheckboxes(form: T, name: String, labels: List<String>, label: String? = null, inline: Boolean = false, block: INPUT.() -> Unit = {}) =
             form.constructInputCheckboxes(name, labels, label, inline, block)
 
+    fun <T : FORM> inputRadios(form: T, name: String, labels: List<String>, label: String? = null, inline: Boolean = false, block: INPUT.() -> Unit = {}) =
+            form.constructInputRadios(name, labels, label, inline, block)
+
     /* CONSTRUCTORS */
     protected abstract fun <T : FORM> T.constructInputNormal(
             inputType: InputType,
@@ -200,6 +203,14 @@ abstract class FormComponents {
     )
 
     protected abstract fun <T : FORM> T.constructInputCheckboxes(
+            inputName: String,
+            labels: List<String>,
+            inputLabel: String?,
+            inline: Boolean = false,
+            block: INPUT.() -> Unit = {}
+    )
+
+    protected abstract fun <T : FORM> T.constructInputRadios(
             inputName: String,
             labels: List<String>,
             inputLabel: String?,

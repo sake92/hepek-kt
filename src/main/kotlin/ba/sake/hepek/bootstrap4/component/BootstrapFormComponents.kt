@@ -91,6 +91,67 @@ data class BootstrapFormComponents(
         }
     }
 
+    override fun <T : FORM> T.constructInputCheckbox(
+            inputName: String,
+            inputLabel: String?,
+            block: INPUT.() -> Unit
+    ) {
+        val label = " $inputLabel"
+        when (formType) {
+            is Type.Companion.Horizontal -> {
+                val (colLabel, colInput) = horizontalRatioClasses(formType, false)
+                formGroup("row") {
+                    div(classes = "$colLabel $colInput") {
+                        label {
+                            input(type = InputType.checkBox, name = inputName) {
+                                if (!inputLabel.isNullOrBlank()) +label
+                            }
+                        }
+                    }
+                }
+            }
+            else -> {
+                label {
+                    input(type = InputType.checkBox, name = inputName) {
+                        if (!inputLabel.isNullOrBlank()) +label
+                    }
+                }
+            }
+        }
+    }
+
+    override fun <T : FORM> T.constructInputCheckboxes(inputName: String, labels: List<String>, inputLabel: String?, inline: Boolean, block: INPUT.() -> Unit) {
+        val label = " $inputLabel"
+        when (formType) {
+            is Type.Companion.Horizontal -> {
+                val (colLabel, colInput) = horizontalRatioClasses(formType, true)
+                formGroup("row") {
+                    label(classes = "text-right $colLabel") { if (!inputLabel.isNullOrBlank()) +label }
+                    div(classes = colInput) {
+                        labels.forEach { cbLabel ->
+                            div(classes = "form-check") {
+                                label {
+                                    input(type = InputType.checkBox, name = inputName) {
+                                        if (!cbLabel.isBlank()) +" $cbLabel"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else -> {
+                labels.forEach { cbLabel ->
+                    label {
+                        input(type = InputType.checkBox, name = inputName) {
+                            if (!cbLabel.isBlank()) +" $cbLabel"
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private fun <T : FORM> T.formGroup(classes: String = "", block: DIV.() -> Unit) =
             div(classes = "form-group $classes") { block(this) }
 

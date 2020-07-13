@@ -170,6 +170,12 @@ abstract class FormComponents {
     fun <T : FORM> inputReset(form: T, value: String, block: INPUT.() -> Unit = {}) =
             form.constructInputButton(InputType.reset, value, value, block)
 
+    fun <T : FORM> inputCheckbox(form: T, name: String, label: String? = null, block: INPUT.() -> Unit = {}) =
+            form.constructInputCheckbox(name, label, block)
+
+    fun <T : FORM> inputCheckboxes(form: T, name: String, labels: List<String>, label: String? = null, inline: Boolean = false, block: INPUT.() -> Unit = {}) =
+            form.constructInputCheckboxes(name, labels, label, inline, block)
+
     /* CONSTRUCTORS */
     protected abstract fun <T : FORM> T.constructInputNormal(
             inputType: InputType,
@@ -184,6 +190,20 @@ abstract class FormComponents {
             inputType: InputType,
             inputValue: String?,
             inputLabel: String?,
+            block: INPUT.() -> Unit = {}
+    )
+
+    protected abstract fun <T : FORM> T.constructInputCheckbox(
+            inputName: String,
+            inputLabel: String?,
+            block: INPUT.() -> Unit = {}
+    )
+
+    protected abstract fun <T : FORM> T.constructInputCheckboxes(
+            inputName: String,
+            labels: List<String>,
+            inputLabel: String?,
+            inline: Boolean = false,
             block: INPUT.() -> Unit = {}
     )
 

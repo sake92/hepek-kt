@@ -28,7 +28,6 @@ class Index(val title: String) : HtmlPage {
     }
 
     val Form = BootstrapFormComponents(BootstrapFormComponents.Companion.Type.Companion.Horizontal(1, 2))
-    //val Form = BootstrapFormComponents(BootstrapFormComponents.Companion.Type.Companion.Inline)
 
     override fun pageSettings(): PageSettings {
         return super.pageSettings().copy(title = title)
@@ -48,9 +47,11 @@ class Index(val title: String) : HtmlPage {
             Form.inputRange(this, "field9", "id9", "Range")
             Form.inputTime(this, "field10", "id10", "Time")
             Form.inputWeek(this, "field11", "id11", "Week")
-            Form.inputMonth(this, "field12",  "Month")
+            Form.inputMonth(this, "field12", "Month")
             Form.inputDate(this, "field13", "Date")
-            Form.inputDateTimeLocal(this, "field14",  "Datetime")
+            Form.inputDateTimeLocal(this, "field14", "Datetime")
+            Form.inputCheckbox(this, "field15", "Wanna?")
+            Form.inputCheckboxes(this, "field16", listOf("Cola", "Coffee", "Water"), "Drinks?")
 
             Form.inputSubmit(this, "Submit") {
                 classes += "btn-primary"
@@ -58,9 +59,6 @@ class Index(val title: String) : HtmlPage {
             Form.inputButton(this, "Button")
             Form.inputReset(this, "Reset")
 
-            button {
-                value = ""
-            }
         }
     }
 }
